@@ -1,0 +1,14 @@
+{
+  "name": "LXQt Linux VM",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "forwardPorts": [6080],
+  "portsAttributes": {
+    "6080": {
+      "label": "LXQt desktop (noVNC)",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "postStartCommand": "nohup flock -n /tmp/lxqt-desktop.lock bash .devcontainer/start-desktop.sh >/tmp/lxqt-desktop.log 2>&1 </dev/null &"
+}
